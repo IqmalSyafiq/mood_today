@@ -1,0 +1,7 @@
+{
+  "name": "mood_today",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
