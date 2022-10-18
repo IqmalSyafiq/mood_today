@@ -1,20 +1,49 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      My Mood Today
     </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button fill="outline" (click)="exitApp()">
+        <ion-icon slot="start" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <form #form="ngForm" (ngSubmit)="updateChart(form)">
+    <ion-item>
+      <ion-label>Happy:</ion-label>
+      <ion-input type="number" [(ngModel)]="moods.happy" name="happy" placeholder="Enter value from 1 - 20" min="1" max="20"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sad:</ion-label>
+      <ion-input type="number" [(ngModel)]="moods.sad" name="sad" placeholder="Enter value from 1 - 20"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Relaxed:</ion-label>
+      <ion-input type="number" [(ngModel)]="moods.relaxed" name="relaxed" placeholder="Enter value from 1 - 20"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Stressed:</ion-label>
+      <ion-input type="number" [(ngModel)]="moods.stressed" name="stressed" placeholder="Enter value from 1 - 20"></ion-input>
+    </ion-item>
+    <button class="update-button" ion-button type="submit" block>Update Mood</button>
+  </form>
+
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Mood Today</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      My Mood
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
